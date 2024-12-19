@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import './App.css'
+import './auth.scss'
 import axios from 'axios';
 
 function App() {
+  const [isRegister, setIsRegister] = useState(true);
+
   // login data
   const [emailLogin, setEmailLogin] = useState('');
 	const [passwordLogin, setPasswordLogin] = useState('');
@@ -27,6 +29,9 @@ function App() {
       } else {
         alert('Successful login!')
       }
+    }).catch((error) => {
+      console.error("Error during register:", error);
+      alert('Failed sign up!')
     })
   }
 
@@ -39,11 +44,11 @@ function App() {
       email: emailRegister,
       password: passwordRegister,
     }).then((response) => {
-      if (!response.data.success) {
-        alert(response.data.alertArr);
-      } else {
+      console.log('Server response:', response.data);
+      if (response.data.success) {
         alert('Successful register!');
-        console.log(response.data.arr);
+      } else {
+        alert('Registration failed. Try again.');
       }
     }).catch((error) => {
       console.error("Error during register:", error);
@@ -53,7 +58,8 @@ function App() {
 
   return (
     <>
-      <form onSubmit={handleRegister}>
+      {isRegister && <form onSubmit={handleRegister}>
+        <h2>Sign Up</h2>
 				<div>
 					<label htmlFor='email'>Email:</label>
 					<input autoComplete='true' onChange={(e) => setEmailRegister(e.target.value)} value={emailRegister} type='email' id='email' name='email' required />
@@ -63,8 +69,10 @@ function App() {
 					<input autoComplete='true' onChange={(e) => setPasswordRegister(e.target.value)} value={passwordRegister} type='password' id='password' name='password' required />
 				</div>
 				<button type='submit'>Register</button>
-			</form>
-      <form onSubmit={handleLogin}>
+        <button onClick={() => setIsRegister(false)} type='button'>Sign In</button>
+			</form>}
+      {!isRegister && <form onSubmit={handleLogin}>
+        <h2>Sign In</h2>
 				<div>
 					<label htmlFor='emailLog'>Email:</label>
 					<input autoComplete='true' onChange={(e) => setEmailLogin(e.target.value)} value={emailLogin} type='email' id='emailLog' name='emailLog' required />
@@ -74,7 +82,8 @@ function App() {
 					<input autoComplete='true' onChange={(e) => setPasswordLogin(e.target.value)} value={passwordLogin} type='password' id='passwordLog' name='passwordLog' required />
 				</div>
 				<button type='submit'>Login</button>
-			</form>
+        <button onClick={() => setIsRegister(true)} type='button'>Sign Up</button>
+			</form>}
     </>
   )
 }

@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+$form-background: #f4f4f4;
+$form-border-radius: 8px;
+$form-padding: 20px;
+$form-input-padding: 10px;
+$form-button-color: #3498DB;
+$form-button-hover-color: #2980B9;
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $form-background;
+}
+
+form {
+  background-color: white;
+  padding: $form-padding;
+  border-radius: $form-border-radius;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #2C3E50;
+}
+
+input {
+  padding: $form-input-padding;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.3s;
+  
+  &:focus {
+    border-color: $form-button-color;
+  }
+}
+
+button {
+  background-color: $form-button-color;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  
+  &:hover {
+    background-color: $form-button-hover-color;
+  }
+}
+
+button[type="button"] {
+  background-color: transparent;
+  color: $form-button-color;
+  border: 1px solid $form-button-color;
+
+  &:hover {
+    background-color: $form-button-color;
+    color: white;
+  }
+}

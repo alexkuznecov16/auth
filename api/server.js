@@ -14,12 +14,12 @@ app.use(express.json());
 // initial array of users with their data
 const users = [
 	{
-		email: 'alexander.kuznecov16@gmail.com',
-		password: 'pass1',
+		email: 'test1@gmail.com',
+		password: 'test1',
 	},
 	{
-		email: 'user2@gmail.com',
-		password: 'pass2',
+		email: 'test2@gmail.com',
+		password: 'test2',
 	},
 	{
 		email: 'qwerty@gmail.com',
@@ -61,3 +61,8 @@ app.post('/register', (req, res) => {
 app.listen(port, () => {
 	console.log(`Login app listening on port ${port}`);
 });
+
+// vercel
+export default (req, res) => {
+	app(req, res);
+};
