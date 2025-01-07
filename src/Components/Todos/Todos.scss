@@ -1,0 +1,97 @@
+// Define colors and fonts for the app
+$todos-primary-color: #3498db;
+$todos-secondary-color: #2ecc71;
+$todos-danger-color: #e74c3c;
+$todos-background: #f5f5f5;
+$todos-font-family: 'Arial', sans-serif;
+$todos-border-radius: 8px;
+$todos-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+$todos-button-hover: #2980b9;
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// Main Todo container
+.todos {
+  font-family: $todos-font-family;
+  background-color: $todos-background;
+  padding: 24px;
+  border-radius: $todos-border-radius;
+  box-shadow: $todos-box-shadow;
+  max-width: 100%;
+  margin: 20px auto;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  &__title {
+    font-size: 2rem;
+    color: $todos-primary-color;
+    text-align: center;
+    margin-bottom: 24px;
+    font-weight: bold;
+  }
+
+  // Task list styles with flexbox
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; // Gap between tasks
+    list-style: none;
+    padding: 50px 0;
+    margin: 0;
+  }
+
+  &__item {
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(33.333% - 16px); // Responsive 3 tasks per row
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid $todos-primary-color;
+    max-width: 300px; // Set max width to prevent overflow
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    &--completed {
+      background-color: $todos-secondary-color;
+      color: white;
+      text-decoration: line-through;
+      border-left: 5px solid $todos-secondary-color;
+    }
+
+    &-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    &-description {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    &-status {
+      font-size: 1rem;
+      font-weight: normal;
+      color: $todos-secondary-color;
+    }
+  }
+}
+
+

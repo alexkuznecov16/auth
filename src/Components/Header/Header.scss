@@ -1,0 +1,32 @@
+/* Header.scss */
+$primary-color: #333;
+$secondary-color: #fff;
+$hover-color: #9147ff;
+
+.header {
+  background-color: $primary-color;
+  color: $secondary-color;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+
+  nav {
+    a {
+      color: $secondary-color;
+      margin: 0 1rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $hover-color;
+      }
+    }
+  }
+}
